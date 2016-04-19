@@ -1,0 +1,72 @@
+###################################################################################################
+
+- name: patch | repo install
+
+  template: src=sources.list.j2
+           dest=/etc/apt/sources.list
+          owner=root
+          group=root
+           mode=0644
+  
+  become: true
+
+###################################################################################################
+
+- name: patch | stat
+
+  stat: path=/managed
+
+  register: managed
+
+###################################################################################################
+
+- name: patch | info
+
+  when: managed.stat.exists == True
+
+  debug: msg="Managed file exists. Skipping update and upgrade"
+
+###################################################################################################
+
+- name: patch | update cache
+
+  when: patch_enable|bool and managed.stat.exists == False
+
+  apt: update_cache=yes
+   cache_valid_time=3600
+
+  become: true
+
+###################################################################################################
+
+- name: patch | package upgrade
+
+  when: patch_enable|bool and managed.stat.exists == False
+
+  apt: upgrade=dist
+
+  become: true
+
+  register: upgraded
+
+###################################################################################################
+
+- name: patch | create file managed
+
+  template: src=managed.j2
+           dest=/managed
+          owner=root
+           mode=0644
+
+  become: true
+
+###################################################################################################
+
+- name: patch | set fact
+
+#  when: upgraded.changed
+
+  set_fact: 
+    reboot_needed: True
+
+###################################################################################################

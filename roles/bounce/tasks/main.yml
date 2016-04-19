@@ -1,0 +1,35 @@
+###################################################################################################
+
+- name: bounce | reboot
+
+  shell: nohup bash -c "sleep 2s && shutdown -r now 'Rebooted from Ansible playbook' " &
+
+  ignore_errors: true 
+  
+  become: true
+
+  when: bounce_reboot and bounce_reboot_allowed
+
+  register: bounce_rebooted
+
+###################################################################################################
+
+- name: bounce | wait for server down
+
+  local_action: wait_for port={{ bounce_wait_for_port                      }}
+                         host={{ bounce_host | default(inventory_hostname) }}
+                        state=stopped
+
+  when: bounce_rebooted.changed
+
+###################################################################################################
+
+- name: bounce | wait for server up
+
+  local_action: wait_for port={{ bounce_wait_for_port                      }} 
+                         host={{ bounce_host | default(inventory_hostname) }} 
+                        state=started
+
+  when: bounce_rebooted.changed
+
+###################################################################################################

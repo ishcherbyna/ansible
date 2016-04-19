@@ -1,0 +1,23 @@
+# {{ ansible_managed }}
+
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }} main restricted
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }} main restricted
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-updates main restricted
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-updates main restricted
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }} universe
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }} universe
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-updates universe
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-updates universe
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }} multiverse
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }} multiverse
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-updates multiverse
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-updates multiverse
+deb http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-backports main restricted universe multiverse
+deb-src http://{{ patch_ubuntu_mirror_country }}.archive.ubuntu.com/ubuntu/ {{ patch_ubuntu_release }}-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu {{ patch_ubuntu_release }}-security main restricted
+deb-src http://security.ubuntu.com/ubuntu {{ patch_ubuntu_release }}-security main restricted
+deb http://security.ubuntu.com/ubuntu {{ patch_ubuntu_release }}-security universe
+deb-src http://security.ubuntu.com/ubuntu {{ patch_ubuntu_release }}-security universe
+deb http://security.ubuntu.com/ubuntu {{ patch_ubuntu_release }}-security multiverse
+deb-src http://security.ubuntu.com/ubuntu {{ patch_ubuntu_release }}-security multiverse
+

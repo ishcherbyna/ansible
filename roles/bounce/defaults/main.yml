@@ -1,0 +1,11 @@
+###################################################################################################
+
+bounce_reboot        : '{{ reboot_needed | default(false) }}'
+bounce_reboot_allowed: true
+
+bounce_wait_for_port           : 22
+bounce_wait_for_delay          : 0
+bounce_wait_for_timeout        : 100
+bounce_wait_for_connect_timeout: 1
+
+###################################################################################################
