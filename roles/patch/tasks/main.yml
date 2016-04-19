@@ -64,7 +64,7 @@
 
 - name: patch | set fact
 
-#  when: upgraded.changed
+  when: upgraded.changed
 
   set_fact: 
     reboot_needed: True
